@@ -25,5 +25,5 @@
     {
         "webbSiteName": "",
         "webbadress": "",
-        "interestsId": 1
+        "interestsId": 
     }
