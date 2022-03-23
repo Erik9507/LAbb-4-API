@@ -21,13 +21,13 @@ namespace LAbb_4_API.Models
             base.OnModelCreating(modelBuilder);
 
             modelBuilder.Entity<Interests>().HasData(new Interests
-            { Id = 1, InterestName = "Padel", InterestDescription = "Padel is a racquet sport that combines the elements of tennis, squash and badminton.", FPersonId = 1 });
+            { Id = 1, InterestName = "Padel", InterestDescription = "Padel is a racquet sport that combines the elements of tennis, squash and badminton.", PersonId = 1 });
             modelBuilder.Entity<Interests>().HasData(new Interests
-            { Id = 2, InterestName = "Rock climbing", InterestDescription = "A sport in which participants climb up, down or across natural rock formations or artificial rock walls.", FPersonId = 2 });
+            { Id = 2, InterestName = "Rock climbing", InterestDescription = "A sport in which participants climb up, down or across natural rock formations or artificial rock walls.", PersonId = 2 });
             modelBuilder.Entity<Interests>().HasData(new Interests
-            { Id = 3, InterestName = "Coding", InterestDescription = "Coding makes it possible for us to create computer software, games, apps and websites.", FPersonId = 3 });
+            { Id = 3, InterestName = "Coding", InterestDescription = "Coding makes it possible for us to create computer software, games, apps and websites.",PersonId = 1 });
             modelBuilder.Entity<Interests>().HasData(new Interests
-            { Id = 4, InterestName = "Surfing", InterestDescription = "Surfing is the sport of riding waves in an upright or prone position. Surfers catch the ocean, river, or man-made waves and glide across the surface", FPersonId = 4 });
+            { Id = 4, InterestName = "Surfing", InterestDescription = "Surfing is the sport of riding waves in an upright or prone position. Surfers catch the ocean, river, or man-made waves and glide across the surface", PersonId = 4 });
 
 
             modelBuilder.Entity<Person>().HasData(new Person { Id = 1, Name = "Viktor", PhoneNumber = "0701234599" });
@@ -35,10 +35,10 @@ namespace LAbb_4_API.Models
             modelBuilder.Entity<Person>().HasData(new Person { Id = 3, Name = "Erik", PhoneNumber = "0707842511" });
             modelBuilder.Entity<Person>().HasData(new Person { Id = 4, Name = "Simon", PhoneNumber = "0738432077" });
 
-            modelBuilder.Entity<WebbAdress>().HasData(new WebbAdress { Id = 1, WebbSiteName = "World Padel Tour", Webbadress = "https://www.worldpadeltour.com/en", FInterestId = 1 });
-            modelBuilder.Entity<WebbAdress>().HasData(new WebbAdress { Id = 2, WebbSiteName = "Climb Europe", Webbadress = "https://climb-europe.com/", FInterestId = 2 });
-            modelBuilder.Entity<WebbAdress>().HasData(new WebbAdress { Id = 3, WebbSiteName = "Code Cademy", Webbadress = "https://www.codecademy.com/", FInterestId = 3 });
-            modelBuilder.Entity<WebbAdress>().HasData(new WebbAdress { Id = 4, WebbSiteName = "Surfer Today", Webbadress = "https://www.surfertoday.com/", FInterestId = 4 });
+            modelBuilder.Entity<WebbAdress>().HasData(new WebbAdress { Id = 1, WebbSiteName = "World Padel Tour", Webbadress = "https://www.worldpadeltour.com/en", InterestsId = 1 });
+            modelBuilder.Entity<WebbAdress>().HasData(new WebbAdress { Id = 2, WebbSiteName = "Climb Europe", Webbadress = "https://climb-europe.com/", InterestsId = 2 });
+            modelBuilder.Entity<WebbAdress>().HasData(new WebbAdress { Id = 3, WebbSiteName = "Code Cademy", Webbadress = "https://www.codecademy.com/", InterestsId = 3 });
+            modelBuilder.Entity<WebbAdress>().HasData(new WebbAdress { Id = 4, WebbSiteName = "Surfer Today", Webbadress = "https://www.surfertoday.com/", InterestsId = 4 });
 
           
         }

@@ -30,7 +30,7 @@ namespace LAbb_4_API.Controllers
                 return StatusCode(StatusCodes.Status500InternalServerError, "Error");
             }
         }
-        [HttpGet("{Id}")]
+        [HttpGet("{Id:int}")]
         public async Task<ActionResult<Interests>> GetInterest(int id)
         {
             try
@@ -54,17 +54,18 @@ namespace LAbb_4_API.Controllers
         {
             try
             {
-                if (newInterest == null)
+                var res = await _iProgram.Add(newInterest);
+                if (res != null)
                 {
-                    return BadRequest();
+                    return Created("", res);
                 }
-                var createdInterest = await _iProgram.Add(newInterest);
-                return CreatedAtAction(nameof(newInterest), new { id = createdInterest.Id }, createdInterest);
+                return NotFound($"Error...");
             }
             catch (Exception)
             {
-                throw;
+                return StatusCode(StatusCodes.Status500InternalServerError, "Error connecting to database");
             }
+            
         }
 
         [HttpDelete("{id}")]
@@ -105,6 +106,26 @@ namespace LAbb_4_API.Controllers
             {
                 return StatusCode(StatusCodes.Status500InternalServerError, "Error");
             }
+        }
+
+        [HttpGet("{getpersoninterest}")]
+        public async Task<ActionResult<Interests>> GetPersonInterest(int id)
+        {
+            try
+            {
+                var res = await _iProgram.GetPeopleWInterests(id);
+                if (res != null)
+                {
+                    
+                    return Ok(res);
+                }
+                return NotFound("Error");
+            }
+            catch (Exception)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, "Error");
+            }
+           
         }
     }
 }

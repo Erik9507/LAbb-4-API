@@ -17,6 +17,7 @@ namespace LAbb_4_API.Services
         }
         public async Task<Interests> Add(Interests newInterest)
         {
+
             var result = await _IntrestContext.Interests.AddAsync(newInterest);
             await _IntrestContext.SaveChangesAsync();
             return result.Entity;
@@ -60,6 +61,25 @@ namespace LAbb_4_API.Services
             }
             return null;
         }
-        
+
+        public async Task<IEnumerable<Interests>> GetPeopleWInterests(int id)
+        {
+            var res = await _IntrestContext.Interests.Include(p => p.Person).Where(i => i.PersonId == id).ToListAsync();
+            if (res != null)
+            {
+                return res;
+            }
+            return null;
+        }
+
+        Task<IEnumerable<Interests>> iProgramRepository<Interests>.GetWebbWithPerson(int id)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
+
+
+
+
+

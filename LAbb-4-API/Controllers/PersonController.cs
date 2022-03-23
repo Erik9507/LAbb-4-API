@@ -106,25 +106,6 @@ namespace LAbb_4_API.Controllers
             }
         }
 
-        [HttpGet("{Id}")] 
-        public async Task<ActionResult<Person>> GetpeopleWithInterest(int id)
-        {
-            try
-            {
-                var result = await _iProgram.GetPeopleWInterests(id);
-                if (result == null)
-                {
-                    return NotFound();
-                }
-                return result;
-
-            }
-            catch (Exception)
-            {
-                return StatusCode(StatusCodes.Status500InternalServerError, "Error");
-            }
-
-        }
-
+        
     }
 }

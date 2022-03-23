@@ -59,5 +59,16 @@ namespace LAbb_4_API.Services
             }
             return null;
         }
+
+        Task<IEnumerable<WebbAdress>> iProgramRepository<WebbAdress>.GetPeopleWInterests(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public async Task<IEnumerable<WebbAdress>> GetWebbWithPerson(int id)
+        {
+            return await _webbContext.WebbAdresses.Where(a => a.Interests.PersonId == id).Include(c => c.Interests.Person).ToListAsync();
+
+        }
     }
 }

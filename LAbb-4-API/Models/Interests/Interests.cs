@@ -13,8 +13,8 @@ namespace LAbb_4_API.Models
         public string InterestName { get; set; }
         public string InterestDescription { get; set; }
 
-        public Person person { get; set; }
-        public int FPersonId { get; set; }
+        public Person Person { get; set; }
+        public int PersonId { get; set; }
         
     }
 }

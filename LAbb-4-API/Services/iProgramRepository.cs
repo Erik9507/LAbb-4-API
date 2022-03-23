@@ -13,7 +13,9 @@ namespace LAbb_4_API.Services
         Task<T> Add(T newEntity);       
         Task<T> Delete(int Id);
         Task<T> Update(T Entity);
-        Task<T> GetPeopleWInterests(int id);
+        Task<IEnumerable<T>> GetPeopleWInterests(int id);
+        Task<IEnumerable<T>> GetWebbWithPerson(int id);
+
 
 
     }

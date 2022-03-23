@@ -14,7 +14,7 @@ namespace LAbb_4_API.Models
         public string Webbadress { get; set; }
 
         public Interests Interests { get; set; }
-        public int FInterestId { get; set; }
+        public int InterestsId { get; set; }
 
     }
 }

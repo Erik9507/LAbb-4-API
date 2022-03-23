@@ -30,7 +30,7 @@ namespace LAbb_4_API.Controllers
                 return StatusCode(StatusCodes.Status500InternalServerError, "Error");
             }
         }
-        [HttpGet("{Id}")]
+        [HttpGet("{Id:int}")]
         public async Task<ActionResult<WebbAdress>> GetWebb(int id)
         {
             try
@@ -53,16 +53,16 @@ namespace LAbb_4_API.Controllers
         {
             try
             {
-                if (newWebb == null)
+                var res = await _iProgram.Add(newWebb);
+                if (res != null)
                 {
-                    return BadRequest();
+                    return Created("", res);
                 }
-                var createdWebb = await _iProgram.Add(newWebb);
-                return CreatedAtAction(nameof(newWebb), new { id = createdWebb.Id }, createdWebb);
+                return NotFound($"Error...");
             }
             catch (Exception)
             {
-                throw;
+                return StatusCode(StatusCodes.Status500InternalServerError, "Error connecting to database");
             }
         }
 
@@ -99,6 +99,24 @@ namespace LAbb_4_API.Controllers
                     return NotFound($"Webb with id {id} not found");
                 }
                 return await _iProgram.Update(webb);
+            }
+            catch (Exception)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, "Error");
+            }
+        }
+
+        [HttpGet("{GetPersonWithWebb}")]
+        public async Task<ActionResult<WebbAdress>> GetWebbWithPerson(int id)
+        {
+            try
+            {
+                var res = await _iProgram.GetWebbWithPerson(id);
+                if (res != null)
+                {
+                    return Ok(res);
+                }
+                return NotFound("Error");
             }
             catch (Exception)
             {
